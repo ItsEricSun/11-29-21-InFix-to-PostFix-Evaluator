@@ -27,9 +27,8 @@ public class LinkedQueue<E> implements Queue<E> {
 		LinkedList<E> temp = new LinkedList<E>(queue);
 		String s = "";
 		while(temp.size() > 0) {
-			s += temp.pop().toString() + "\n";
+			s += temp.removeLast().toString() + " ";
 		}
 		return s;
 	}
-	
 }

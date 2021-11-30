@@ -22,11 +22,22 @@ public class InfixEvaluator {
 					if(s2.equals("(")) break;
 					queue.enqueue(s2);
 				}
-			} 
-			
+			} else if(s.equals("^") || s.equals("*") || s.equals("/") || s.equals("+") || s.equals("-")) {
+				if(stack.size() == 0 || isHigher(s)) {
+					stack.push(s);
+				} else {
+					while(!isHigher(s) && stack.size() > 0) {
+						queue.enqueue(stack.pop());
+					}
+					stack.push(s);
+				}
+			} else {
+				//TODO
+			}
 		}
-		
-		
+		while(!stack.isEmpty()) {
+			queue.enqueue(stack.pop());
+		}
 		return queue;
 	}
 	
@@ -42,8 +53,8 @@ public class InfixEvaluator {
 	public boolean isHigher(String token) {
 		String s = stack.peek();
 		if(token.equals("^") && (s.equals("*") || s.equals("/") || s.equals("+") || s.equals("-") || s.equals("("))) return true;
-		if((token.equals("*") || token.equals("/")) && (s.equals("+") || s.equals("_") || s.equals("("))) return true;
-		if((token.equals("+") || token.equals("_")) && s.equals("(")) return true;
+		if((token.equals("*") || token.equals("/")) && (s.equals("+") || s.equals("-") || s.equals("("))) return true;
+		if((token.equals("+") || token.equals("-")) && s.equals("(")) return true;
 		return false;
 	}
 }

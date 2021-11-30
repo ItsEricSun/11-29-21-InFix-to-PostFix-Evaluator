@@ -27,7 +27,7 @@ public class LinkedStack<E> implements Stack<E> {
 		LinkedList<E> temp = new LinkedList<E>(stack);
 		String s = "";
 		while(temp.size() > 0) {
-			s += temp.pop().toString() + "\n";
+			s += temp.pop().toString() + " ";
 		}
 		return s;
 	}
@@ -39,7 +39,4 @@ public class LinkedStack<E> implements Stack<E> {
 		stack.push(3.0);
 		System.out.println(stack.toString());
 	}
-
-	
-	
 }
