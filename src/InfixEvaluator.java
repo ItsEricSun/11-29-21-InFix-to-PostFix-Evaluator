@@ -26,7 +26,7 @@ public class InfixEvaluator {
 				if(stack.size() == 0 || isHigher(s)) {
 					stack.push(s);
 				} else {
-					while(!isHigher(s) && stack.size() > 0) {
+					while(stack.size() > 0 && !isHigher(s)) {
 						queue.enqueue(stack.pop());
 					}
 					stack.push(s);
