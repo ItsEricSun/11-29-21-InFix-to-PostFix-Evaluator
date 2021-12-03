@@ -12,7 +12,7 @@ public class PostfixEvaluator {
 		stack = new LinkedStack<Double>();
 	}
 	
-	public double evaluate(Queue<String> q) {
+	public double evaluate(Queue<String> q) throws Exception {
 		while(!q.isEmpty()) {
 			String value = q.dequeue();
 			if(!isOperator(value)) {
@@ -23,7 +23,8 @@ public class PostfixEvaluator {
 					evalSingleOp(value.charAt(0), op1, op2);
 			}
 		}
-			return stack.pop();	
+		if(stack.size() > 1) throw new Exception();
+		return stack.pop();	
 	}
 	
 	public boolean isOperator(String token) {
@@ -58,21 +59,4 @@ public class PostfixEvaluator {
 		
 	}
 	
-//	public class IncorrectInput extends Exception { 
-//	    public IncorrectInput(String errorMessage) {
-//	        super(errorMessage);
-//	    }
-//	}
-//	
-//	public class NotEnoughOperands extends Exception { 
-//	    public NotEnoughOperands(String errorMessage) {
-//	        super(errorMessage);
-//	    }
-//	}
-//	
-//	public class TooManyOperands extends Exception { 
-//	    public TooManyOperands(String errorMessage) {
-//	        super(errorMessage);
-//	    }
-//	}
 }

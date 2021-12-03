@@ -5,7 +5,6 @@ public class LinkedQueue<E> implements Queue<E> {
 	private LinkedStack<E> s1 = new LinkedStack<>();
 	private LinkedStack<E> s2 = new LinkedStack<>();
 	
-
 	public void enqueue(E elem) {
 		if(s1.isEmpty()) {
 			s1.push(elem);
@@ -18,12 +17,10 @@ public class LinkedQueue<E> implements Queue<E> {
 				s1.push(s2.pop());
 			}
 		}
-//		queue.addFirst(elem);
 	}
 
 	public E dequeue() {
 		return s1.pop();
-//		return queue.removeLast();
 	}
 
 	public E first() {
@@ -40,12 +37,6 @@ public class LinkedQueue<E> implements Queue<E> {
 	
 	public String toString() {
 		return s1.toString();
-//		LinkedList<E> temp = new LinkedList<E>(s1);
-//		String s = "";
-//		while(temp.size() > 0) {
-//			s += temp.pop().toString() + "\n";
-//		}
-//		return s;
 	}
 	
 }
