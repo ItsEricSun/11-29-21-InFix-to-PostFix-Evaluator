@@ -3,12 +3,12 @@ public class InfixEvaluator {
 
 	LinkedQueue<String> queue;
 	LinkedStack<String> stack;
-	
+
 	InfixEvaluator() {
 		queue = new LinkedQueue<String>();
 		stack = new LinkedStack<String>();
 	}
-	
+
 	public String toSimp(String ex) throws Exception {
 		if(ex.contains("f") || ex.contains("d") || ex.contains("F") || ex.contains("D")) throw new Exception();
 		ex = ex.replaceAll(" " , "");
@@ -25,7 +25,7 @@ public class InfixEvaluator {
 		}
 		return sb.toString();
 	}
-	
+
 	public LinkedQueue<String> toPostfix(String expression) throws Exception {
 		String ex = toSimp(expression);
 		String[] input = ex.split(" ");
@@ -49,7 +49,8 @@ public class InfixEvaluator {
 					}
 					stack.push(s);
 				}
-			} else {
+			} else if(s.equals("")) continue;
+			else {
 				throw new Exception();
 			}
 		}
@@ -58,7 +59,7 @@ public class InfixEvaluator {
 		}
 		return queue;
 	}
-	
+
 	public boolean isNumber(String token) {
 		try {
 			Double.parseDouble(token);
@@ -67,7 +68,7 @@ public class InfixEvaluator {
 		}
 		return true;
 	}
-	
+
 	public boolean isHigher(String token) {
 		String s = stack.peek();
 		if(token.equals("^") && (s.equals("*") || s.equals("/") || s.equals("+") || s.equals("-") || s.equals("("))) return true;

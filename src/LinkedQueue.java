@@ -1,10 +1,9 @@
 import java.util.LinkedList;
 
 public class LinkedQueue<E> implements Queue<E> {
-	private LinkedList<E> queue = new LinkedList<E>();
 	private LinkedStack<E> s1 = new LinkedStack<>();
 	private LinkedStack<E> s2 = new LinkedStack<>();
-	
+
 	public void enqueue(E elem) {
 		if(s1.isEmpty()) {
 			s1.push(elem);
@@ -34,9 +33,8 @@ public class LinkedQueue<E> implements Queue<E> {
 	public int size() {
 		return s1.size();
 	}
-	
+
 	public String toString() {
 		return s1.toString();
 	}
-	
 }
